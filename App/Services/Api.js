@@ -23,7 +23,8 @@ const create = (baseURL = AppConfig.baseApiUrl) => {
     // 60 second timeout...
     timeout: 60000,
     params: {
-      key: AppConfig.apiKey
+      key: AppConfig.apiKey,
+      hideuserinfo: ''
     }
   })
 
@@ -42,7 +43,7 @@ const create = (baseURL = AppConfig.baseApiUrl) => {
   // way at this level.
   //
   const authUser = (email, password) => api.get('oatncxmy', {email, password} )
-  const getMomentList = () => api.get('bs3d7pw3')
+  const getMomentList = (results = 10) => api.get('bs3d7pw3', {results})
 
   // ------
   // STEP 3

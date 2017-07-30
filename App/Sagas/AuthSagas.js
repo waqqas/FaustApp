@@ -3,7 +3,6 @@ import AuthActions from '../Redux/AuthRedux'
 
 export function * authUser (api, {email, password}) {
   const response = yield call(api.authUser, email, password)
-  console.log('response: ', response)
   if (response.ok === true) {
     yield put(AuthActions.authUserSuccess(response))
   } else {
