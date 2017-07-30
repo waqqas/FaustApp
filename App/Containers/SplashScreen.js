@@ -18,7 +18,8 @@ class SplashScreen extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.success === true) {
 
-      const routeName = this.props.loggedIn ? 'discover' : 'discover'
+      // const routeName = this.props.loggedIn ? 'discover' : 'login'
+      const routeName = 'discover'
 
       const resetAction = NavigationActions.reset({
         index: 0,
@@ -33,7 +34,7 @@ class SplashScreen extends Component {
   render() {
     return (
       <View style={[styles.mainContainer, {backgroundColor: Colors.background, justifyContent: 'center', alignItems: 'center'}]}>
-        <Image source={Images.background}/>
+        <Image source={Images.logo}/>
       </View>
     )
   }
