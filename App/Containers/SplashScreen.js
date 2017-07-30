@@ -18,8 +18,7 @@ class SplashScreen extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.success === true) {
 
-      // const routeName = this.props.loggedIn ? 'discover' : 'login'
-      const routeName = 'discover'
+      const routeName = this.props.loggedIn ? 'discover' : 'login'
 
       const resetAction = NavigationActions.reset({
         index: 0,

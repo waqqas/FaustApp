@@ -25,7 +25,8 @@ export const INITIAL_STATE = Immutable({
 export const authUser = (state) => state.merge({fetching: true})
 
 export const authUserSuccess = (state, {response}) => {
-  const {token} = response.data
+  const {results} = response.data
+  const token = results[0].token
   return state.merge({fetching: false, error: null, token})
 }
 
