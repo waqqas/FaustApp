@@ -4,7 +4,7 @@ import {Image, View} from 'react-native'
 import MomentActions from '../Redux/MomentRedux'
 // Styles
 import styles from './Styles/DiscoverScreenStyle'
-import {Metrics} from '../Themes'
+import {Images, Metrics} from '../Themes'
 import Swiper from 'react-native-swiper'
 
 class DiscoverScreen extends Component {
@@ -25,7 +25,8 @@ class DiscoverScreen extends Component {
   renderMoment(moment, i) {
     return (
       <View key={i + 1}>
-        <Image resizeMode='cover' style={{height: Metrics.screenHeight, width: Metrics.screenWidth}}
+        <Image resizeMode='cover'
+               style={[styles.backgroundImage, {height: Metrics.screenHeight, width: Metrics.screenWidth}]}
                source={{uri: moment.image}}/>
       </View>
     )
@@ -34,9 +35,10 @@ class DiscoverScreen extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Swiper style={styles.wrapper} showsButtons={true}>
+        <Swiper style={styles.wrapper} showsButtons={true} showsPagination={false}>
           {this.props.momentList.map(this.renderMoment)}
         </Swiper>
+        <Image style={{position: 'absolute', left: Metrics.screenWidth / 2 - 35, top: 40}} source={Images.logo}/>
       </View>
     )
   }
