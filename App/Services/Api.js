@@ -21,7 +21,10 @@ const create = (baseURL = AppConfig.baseApiUrl) => {
       'Accept': 'application/json'
     },
     // 60 second timeout...
-    timeout: 60000
+    timeout: 60000,
+    data: {
+      key: AppConfig.apiKey
+    }
   })
 
   // ------
@@ -39,6 +42,7 @@ const create = (baseURL = AppConfig.baseApiUrl) => {
   // way at this level.
   //
   const authUser = (email, password) => api.post('auth', {user: {email, password}} )
+  const getMoment = () => api.get('bs3d7pw3')
 
   // ------
   // STEP 3
@@ -55,6 +59,7 @@ const create = (baseURL = AppConfig.baseApiUrl) => {
   return {
     setHeader: api.setHeader,
     authUser,
+    getMoment
   }
 }
 

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Image, View} from "react-native";
 import {Images} from "../Themes";
 import {connect} from "react-redux";
+import {NavigationActions} from 'react-navigation'
 // Styles
 import { Colors } from '../Themes'
 import styles from "./Styles/SplashScreenStyles";
@@ -17,15 +18,15 @@ class SplashScreen extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.success === true) {
 
-      // const routeName = this.props.loggedIn ? 'discover' : 'login'
-      //
-      // const resetAction = NavigationActions.reset({
-      //   index: 0,
-      //   actions: [
-      //     NavigationActions.navigate({routeName})
-      //   ]
-      // })
-      // this.props.navigation.dispatch(resetAction)
+      const routeName = this.props.loggedIn ? 'discover' : 'discover'
+
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({routeName})
+        ]
+      })
+      this.props.navigation.dispatch(resetAction)
     }
   }
 

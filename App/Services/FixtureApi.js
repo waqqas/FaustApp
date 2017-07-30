@@ -1,6 +1,6 @@
 export default {
   // Functions return fixtures
-  getRoot: () => {
+  authUser: (email, password) => {
     return {
       ok: true,
       data: require('../Fixtures/root.json')

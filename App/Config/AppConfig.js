@@ -1,3 +1,4 @@
 export default {
-  baseApiUrl: 'https://faustapp.herokuapp.com/api/v1/'
+  baseApiUrl: 'https://randomapi.com/api/',
+  apiKey: 'RMXR-5IXG-U5JL-D74R'
 }
