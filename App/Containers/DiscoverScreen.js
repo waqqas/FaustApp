@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Image, View} from 'react-native'
 import MomentActions from '../Redux/MomentRedux'
-import {Card, CardItem, Content, DeckSwiper, Icon, Spinner} from 'native-base'
 // Styles
 import styles from './Styles/DiscoverScreenStyle'
 import {Metrics} from '../Themes'
+import Swiper from 'react-native-swiper'
 
 class DiscoverScreen extends Component {
 
@@ -22,28 +22,22 @@ class DiscoverScreen extends Component {
 
   }
 
-  renderMoment(moment) {
-    console.log('moment: ', moment)
+  renderMoment(moment, i) {
     return (
-      <Card>
-        <CardItem>
-          <Image resizeMode='cover' style={{height: Metrics.screenHeight, width: Metrics.screenWidth}}
-                 source={{uri: moment.image}}/>
-        </CardItem>
-      </Card>
+      <View key={i + 1}>
+        <Image resizeMode='cover' style={{height: Metrics.screenHeight, width: Metrics.screenWidth}}
+               source={{uri: moment.image}}/>
+      </View>
     )
   }
 
   render() {
     return (
-      <Content>
-        <View style={styles.mainContainer}>
-          {(!this.props.loading && this.props.momentList.length > 0) && <DeckSwiper
-            dataSource={this.props.momentList}
-            renderItem={this.renderMoment.bind(this)}
-          />}
-        </View>
-      </Content>
+      <View style={styles.mainContainer}>
+        <Swiper style={styles.wrapper} showsButtons={true}>
+          {this.props.momentList.map(this.renderMoment)}
+        </Swiper>
+      </View>
     )
   }
 }
