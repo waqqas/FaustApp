@@ -8,6 +8,7 @@ export default () => {
     nav: require('./NavigationRedux').reducer,
     startup: require('./StartupRedux').reducer,
     auth: require('./AuthRedux').reducer,
+    moment: require('./MomentRedux').reducer,
   })
 
   return configureStore(rootReducer, rootSaga)

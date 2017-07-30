@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import MomentActions from '../Redux/MomentRedux'
 
 // Styles
 import styles from './Styles/DiscoverScreenStyle'
@@ -21,11 +20,14 @@ class DiscoverScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    loading: state.moment.loading,
+    momentList: state.moment.list
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getMomentList: () => dispatch(MomentActions.getMomentList())
   }
 }
 

@@ -7,11 +7,13 @@ import DebugConfig from '../Config/DebugConfig'
 
 import { StartupTypes } from '../Redux/StartupRedux'
 import { AuthTypes } from '../Redux/AuthRedux'
+import {MomentTypes} from "../Redux/MomentRedux";
 
 /* ------------- Sagas ------------- */
 
 import { startup, startupSuccess } from './StartupSagas'
 import {authUser, authUserSuccess} from "./AuthSagas";
+import {getMomentList} from "./MomentSagas";
 
 /* ------------- API ------------- */
 
@@ -27,5 +29,6 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP_SUCCESS, startupSuccess, api),
     takeLatest(AuthTypes.AUTH_USER, authUser, api),
     takeLatest(AuthTypes.AUTH_USER_SUCCESS, authUserSuccess, api),
+    takeLatest(MomentTypes.GET_MOMENT_LIST, getMomentList, api),
   ]
 }

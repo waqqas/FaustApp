@@ -42,7 +42,7 @@ const create = (baseURL = AppConfig.baseApiUrl) => {
   // way at this level.
   //
   const authUser = (email, password) => api.get('oatncxmy', {email, password} )
-  const getMoments = () => api.get('bs3d7pw3')
+  const getMomentList = () => api.get('bs3d7pw3')
 
   // ------
   // STEP 3
@@ -59,7 +59,7 @@ const create = (baseURL = AppConfig.baseApiUrl) => {
   return {
     setHeader: api.setHeader,
     authUser,
-    getMoments
+    getMomentList
   }
 }
 
