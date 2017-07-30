@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import {Image, View} from "react-native";
 import {Images} from "../Themes";
 import {connect} from "react-redux";
-import {NavigationActions} from "react-navigation";
 // Styles
+import { Colors } from '../Themes'
 import styles from "./Styles/SplashScreenStyles";
 
 class SplashScreen extends Component {
@@ -31,8 +31,8 @@ class SplashScreen extends Component {
 
   render() {
     return (
-      <View style={styles.mainContainer}>
-        <Image source={Images.background} style={styles.splashImage} />
+      <View style={[styles.mainContainer, {backgroundColor: Colors.background, justifyContent: 'center', alignItems: 'center'}]}>
+        <Image source={Images.background}/>
       </View>
     )
   }
