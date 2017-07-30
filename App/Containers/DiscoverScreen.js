@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Image, View} from 'react-native'
 import MomentActions from '../Redux/MomentRedux'
-import {Card, CardItem, Content, DeckSwiper, Icon, Spinner, Text} from 'native-base'
+import {Card, CardItem, Content, DeckSwiper, Icon, Spinner} from 'native-base'
 // Styles
-import {Metrics} from '../Themes'
 import styles from './Styles/DiscoverScreenStyle'
+import {Metrics} from '../Themes'
 
 class DiscoverScreen extends Component {
 
@@ -25,9 +25,10 @@ class DiscoverScreen extends Component {
   renderMoment(moment) {
     console.log('moment: ', moment)
     return (
-      <Card style={{height: Metrics.screenHeight, width: Metrics.screenWidth}}>
-        <CardItem cardBody>
-          <Image source={{uri: moment.image}}/>
+      <Card>
+        <CardItem>
+          <Image resizeMode='cover' style={{height: Metrics.screenHeight, width: Metrics.screenWidth}}
+                 source={{uri: moment.image}}/>
         </CardItem>
       </Card>
     )
