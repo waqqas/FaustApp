@@ -1,8 +1,10 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce'
 
+import AppConfig from '../Config/AppConfig'
+
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = AppConfig.baseApiUrl) => {
   // ------
   // STEP 1
   // ------
@@ -14,10 +16,12 @@ const create = (baseURL = 'https://api.github.com/') => {
     baseURL,
     // here are some default headers
     headers: {
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'Content-Type': 'application/json; charset=utf-8',
+      'Accept': 'application/json'
     },
-    // 10 second timeout...
-    timeout: 10000
+    // 60 second timeout...
+    timeout: 60000
   })
 
   // ------
@@ -34,9 +38,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const authUser = (email, password) => api.post('auth', {user: {email, password}} )
 
   // ------
   // STEP 3
@@ -51,10 +53,8 @@ const create = (baseURL = 'https://api.github.com/') => {
   // private scoped goodies in JavaScript.
   //
   return {
-    // a list of the API functions from step 2
-    getRoot,
-    getRate,
-    getUser
+    setHeader: api.setHeader,
+    authUser,
   }
 }
 

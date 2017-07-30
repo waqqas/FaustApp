@@ -1,6 +1,3 @@
-// Simple React Native specific changes
-
 export default {
-  // font scaling override - RN default is on
-  allowTextFontScaling: true
+  baseApiUrl: 'https://faustapp.herokuapp.com/api/v1/'
 }
