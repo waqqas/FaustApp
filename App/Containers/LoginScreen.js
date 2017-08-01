@@ -2,15 +2,24 @@ import React, {Component} from 'react'
 import {View} from 'react-native'
 import {connect} from 'react-redux'
 import {NavigationActions} from "react-navigation"
-
+import {Button, FormInput, FormLabel} from 'react-native-elements'
 // Styles
 import styles from './Styles/LoginScreenStyle'
 import AuthActions from '../Redux/AuthRedux'
 
 class LoginScreen extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
   componentDidMount() {
-    this.props.authUser('waqqas.jabbar@gmail.com', 'password')
+    // this.props.authUser('waqqas.jabbar@gmail.com', 'password')
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,9 +35,20 @@ class LoginScreen extends Component {
     }
   }
 
+  authUser() {
+    if (this.state.email && this.state.password) {
+      this.props.authUser(this.state.email, this.state.password)
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        <FormLabel>Email</FormLabel>
+        <FormInput onChangeText={(email) => this.setState({email})}/>
+        <FormLabel>Password</FormLabel>
+        <FormInput onChangeText={(password) => this.setState({password})}/>
+        <Button title="Login" disabled={this.props.loading} onPress={this.authUser.bind(this)}/>
       </View>
     )
   }
